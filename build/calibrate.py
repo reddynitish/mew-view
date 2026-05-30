@@ -15,7 +15,7 @@ import numpy as np
 
 from engine_factory import build_engine
 
-log = logging.getLogger("ruview.calibrate")
+log = logging.getLogger("mewview.calibrate")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(HERE, "config.json")
@@ -36,7 +36,7 @@ def run_calibration(seconds=30, prompt=True):
     cfg = load_config()
     if prompt:
         print("=" * 56)
-        print(" RuView Acoustic - Calibration")
+        print(" MEW-View - Calibration")
         print(" Please LEAVE THE ROOM. Recording empty-room baseline")
         print(" for %d seconds. Starting in 10s..." % seconds)
         print("=" * 56)

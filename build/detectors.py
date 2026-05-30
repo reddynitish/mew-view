@@ -10,7 +10,7 @@ import collections
 
 import numpy as np
 
-log = logging.getLogger("ruview.detect")
+log = logging.getLogger("mewview.detect")
 
 
 class PresenceDetector:

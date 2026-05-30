@@ -1,4 +1,4 @@
-RuView Acoustic — room awareness via ultrasound
+MEW-View — room awareness via ultrasound
 ================================================
 
 WHAT IT IS
@@ -17,7 +17,7 @@ REQUIREMENTS
       librosa, matplotlib
 
 OPEN THE DASHBOARD
-  1. Double-click start_ruview.bat  (or run it from a terminal).
+  1. Double-click start_mewview.bat  (or run it from a terminal).
   2. On first run it will CALIBRATE: leave the room for 30 seconds when asked.
      The empty-room baseline is saved to baseline.npy.
   3. Open a browser at:  http://localhost:5000
@@ -30,16 +30,16 @@ RECALIBRATE
   the laptop or rearrange the room.
 
 STOP THE SERVICE
-  - If started from start_ruview.bat: press Ctrl+C in that window, or close it.
+  - If started from start_mewview.bat: press Ctrl+C in that window, or close it.
   - If running as a scheduled task:
-       schtasks /End /TN RuViewAcoustic
+       schtasks /End /TN MEWView
     Disable auto-start:
-       schtasks /Delete /TN RuViewAcoustic /F
+       schtasks /Delete /TN MEWView /F
 
 AUTO-START ON BOOT (optional)
   Register a Task Scheduler entry (run once, from this folder):
-     schtasks /Create /TN RuViewAcoustic /SC ONLOGON /RL HIGHEST ^
-       /TR "\"%CD%\start_ruview.bat\"" /F
+     schtasks /Create /TN MEWView /SC ONLOGON /RL HIGHEST ^
+       /TR "\"%CD%\start_mewview.bat\"" /F
 
 CONFIG
   Edit config.json to change:
@@ -51,7 +51,7 @@ CONFIG
     - dashboard_port               (default 5000)
 
 LOGS
-  Rotating logs are written to logs\ruview.log (kept 7 days).
+  Rotating logs are written to logs\mewview.log (kept 7 days).
 
 TROUBLESHOOTING
   - No audio captured / presence never triggers:

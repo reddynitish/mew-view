@@ -12,7 +12,7 @@ import logging
 import numpy as np
 from scipy.signal import butter, sosfilt, sosfilt_zi, hilbert
 
-log = logging.getLogger("ruview.engine")
+log = logging.getLogger("mewview.engine")
 
 
 class SignalEngine:

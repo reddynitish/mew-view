@@ -7,7 +7,7 @@ import numpy as np
 from flask import Flask, render_template, jsonify, request
 from flask_socketio import SocketIO
 
-log = logging.getLogger("ruview.dashboard")
+log = logging.getLogger("mewview.dashboard")
 
 # display sizes for the spatial panels (keeps the socket payload small)
 PROF_BINS = 48     # range profile / waterfall columns
@@ -111,7 +111,7 @@ def build_payload(result, started_at):
 
 def create_dashboard(engine, suite, config, started_at):
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "ruview-acoustic-local"
+    app.config["SECRET_KEY"] = "mew-view-local"
     socketio = SocketIO(app, async_mode="threading", cors_allowed_origins="*")
 
     latest = {"payload": None}

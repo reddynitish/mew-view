@@ -8,7 +8,7 @@ config "engine_mode": "fmcw" (default) or "tone".
 
 import logging
 
-log = logging.getLogger("ruview.factory")
+log = logging.getLogger("mewview.factory")
 
 
 def build_engine(config):

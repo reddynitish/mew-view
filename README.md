@@ -1,8 +1,8 @@
-# RuView Acoustic
+# MEW-View
 
 Room awareness via ultrasound — no camera, no cloud, no external sensors.
 
-RuView emits an inaudible FMCW chirp (18–22 kHz) from the laptop speaker and listens to reflections on the built-in microphone. From the changing reflection pattern it estimates:
+MEW-View emits an inaudible FMCW chirp (18–22 kHz) from the laptop speaker and listens to reflections on the built-in microphone. From the changing reflection pattern it estimates:
 
 - **Room occupancy** — empty or occupied
 - **Target range** — how far away the person is (±4 cm resolution)
@@ -72,7 +72,7 @@ Edit `build\config.json` and set `mic_index` and `speaker_index` to match.
 ## Running
 
 ```bat
-build\start_ruview.bat
+build\start_mewview.bat
 ```
 
 On first launch, calibration runs automatically: the app prompts you to **leave the room for 30 seconds** while it records the empty-room baseline (`baseline.npy`). After that, open a browser at `http://localhost:5000`.
@@ -117,7 +117,7 @@ build/
   dashboard.py        Flask + SocketIO server, payload builder
   calibrate.py        Empty-room baseline recorder
   config.json         Runtime configuration
-  start_ruview.bat    One-click launcher
+  start_mewview.bat    One-click launcher
   templates/
     index.html        Dashboard HTML shell
   static/
@@ -132,18 +132,18 @@ build/
 ## Auto-start on boot (optional)
 
 ```bat
-schtasks /Create /TN RuViewAcoustic /SC ONLOGON /RL HIGHEST ^
-  /TR "\"%CD%\build\start_ruview.bat\"" /F
+schtasks /Create /TN MEWView /SC ONLOGON /RL HIGHEST ^
+  /TR "\"%CD%\build\start_mewview.bat\"" /F
 ```
 
-Stop: `schtasks /End /TN RuViewAcoustic`  
-Remove: `schtasks /Delete /TN RuViewAcoustic /F`
+Stop: `schtasks /End /TN MEWView`  
+Remove: `schtasks /Delete /TN MEWView /F`
 
 ---
 
 ## Logs
 
-Rotating logs in `build/logs/ruview.log` (7-day retention).
+Rotating logs in `build/logs/mewview.log` (7-day retention).
 
 ---
 

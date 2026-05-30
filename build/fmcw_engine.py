@@ -36,7 +36,7 @@ import logging
 import numpy as np
 from scipy.signal import butter, sosfilt, hilbert, correlate
 
-log = logging.getLogger("ruview.fmcw")
+log = logging.getLogger("mewview.fmcw")
 
 C_SOUND = 343.0  # m/s, speed of sound (room temp)
 

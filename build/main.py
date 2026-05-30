@@ -1,4 +1,4 @@
-"""RuView Acoustic — entry point.
+"""MEW-View — entry point.
 
 Loads config, ensures a calibration baseline exists, starts the signal engine
 and detector suite, then serves the dashboard. A watchdog restarts audio
@@ -22,13 +22,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(HERE, "config.json")
 LOG_DIR = os.path.join(HERE, "logs")
 
-log = logging.getLogger("ruview")
+log = logging.getLogger("mewview")
 
 
 def setup_logging():
     os.makedirs(LOG_DIR, exist_ok=True)
     handler = TimedRotatingFileHandler(
-        os.path.join(LOG_DIR, "ruview.log"),
+        os.path.join(LOG_DIR, "mewview.log"),
         when="midnight", backupCount=7, encoding="utf-8")
     fmt = logging.Formatter("%(asctime)s %(name)s %(levelname)s %(message)s")
     handler.setFormatter(fmt)
@@ -70,7 +70,7 @@ def watchdog(engine):
 def main():
     setup_logging()
     cfg = load_config()
-    log.info("RuView Acoustic starting")
+    log.info("MEW-View starting")
 
     # ensure calibration baseline exists
     if not cfg.get("calibrated") or not os.path.exists(
