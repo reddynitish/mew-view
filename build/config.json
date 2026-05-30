@@ -1,0 +1,29 @@
+{
+  "engine_mode": "fmcw",
+  "mic_index": 9,
+  "speaker_index": 8,
+  "wasapi_exclusive": true,
+  "samplerate": 48000,
+  "block": 1024,
+  "frequency": 19000.0,
+  "amplitude": 0.5,
+  "band_halfwidth": 400.0,
+  "chirp_f0": 18000.0,
+  "chirp_f1": 22000.0,
+  "chirp_len": 2048,
+  "num_chirps": 64,
+  "range_max_m": 6.0,
+  "range_guard_m": 0.4,
+  "target_snr_min": 8.0,
+  "presence_k": 4.0,
+  "movement_thresholds": {
+    "slow": 0.05,
+    "active": 0.15,
+    "rapid": 0.35
+  },
+  "breath_fmin": 0.1,
+  "breath_fmax": 0.5,
+  "breath_sensitivity": 1.5,
+  "dashboard_port": 5000,
+  "calibrated": true
+}

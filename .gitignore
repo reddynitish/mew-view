@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+*.egg-info/
+dist/
+build_dist/
+
+# Virtual environment
+build/venv/
+venv/
+
+# Calibration data (machine-specific)
+build/baseline.npy
+
+# Logs
+build/logs/
+
+# Local Claude Code settings
+.claude/
+
+# Windows
+Thumbs.db
+desktop.ini

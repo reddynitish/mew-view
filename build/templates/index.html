@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RuView Acoustic</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>RuView <span>Acoustic</span></h1>
+    <div class="meta">
+      <button id="powerToggle" class="switch on" type="button"
+              aria-pressed="true" title="Turn the sensing program on or off">
+        <span class="switch-track"><span class="switch-knob"></span></span>
+        <span class="switch-label" id="powerState">ON</span>
+      </button>
+      <span id="conn" class="badge off">connecting</span>
+      <span>uptime <b id="uptime">0s</b></span>
+      <span>updated <b id="updated">--:--:--</b></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Spatial "video" view ===== -->
+    <section class="card spatial" id="spatialCard">
+      <div class="label">Spatial View
+        <span class="tag">acoustic radar &middot; FMCW chirp</span></div>
+      <div id="three" class="three"></div>
+      <div class="limits">
+        Distance + radial velocity only &mdash; <b>angle is unknown</b> with one
+        mic, so the person sits somewhere on the glowing ring at the measured
+        range. Blue = approaching, red = receding. Velocity above
+        <span id="vmaxNote">~0.1</span> m/s is coarse.
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="label">Target</div>
+      <div class="big" id="tgtRange">-- m</div>
+      <div class="sub">velocity <b id="tgtVel">0.00</b> m/s &middot;
+        dir <b id="tgtDir">none</b></div>
+      <div class="sub">strength <b id="tgtStr">0%</b> &middot;
+        snr <b id="tgtSnr">0</b></div>
+    </section>
+
+    <section class="card wide2">
+      <div class="label">Range&ndash;Doppler Map
+        <span class="tag">distance &times; velocity</span></div>
+      <canvas id="rdm" height="180"></canvas>
+      <div class="axis"><span>0 m</span><span id="rdmMax">range &rarr;</span></div>
+    </section>
+
+    <section class="card wide2">
+      <div class="label">Range&ndash;Time Waterfall
+        <span class="tag">where motion was</span></div>
+      <canvas id="waterfall" height="180"></canvas>
+      <div class="axis"><span>now</span><span>distance &rarr;</span></div>
+    </section>
+
+    <!-- ===== Readout cards (legacy) ===== -->
+    <section class="card status" id="statusCard">
+      <div class="label">Room Status</div>
+      <div class="big" id="roomStatus">&mdash;</div>
+      <div class="sub">confidence <b id="confidence">0%</b></div>
+    </section>
+
+    <section class="card">
+      <div class="label">Movement</div>
+      <div class="bigsm" id="moveLevel">still</div>
+      <div class="gauge"><div class="gauge-fill" id="moveBar"></div></div>
+      <div class="sub">direction <b id="moveDir">none</b> &middot;
+        doppler <b id="doppler">0</b> Hz</div>
+    </section>
+
+    <section class="card">
+      <div class="label">Breathing</div>
+      <div class="big" id="bpm">--</div>
+      <div class="sub" id="bpmSub">waiting for still subject</div>
+    </section>
+
+    <section class="card">
+      <div class="label">Activity</div>
+      <div class="bigsm" id="activity">&mdash;</div>
+    </section>
+
+    <section class="card wide">
+      <div class="label">Signal Waveform (chirp band)</div>
+      <canvas id="wave" height="140"></canvas>
+    </section>
+  </main>
+
+  <script src="/static/socket.io.min.js"></script>
+  <script src="/static/three.min.js"></script>
+  <script src="/static/spatial.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
