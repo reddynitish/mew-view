@@ -1,0 +1,2 @@
+sessions.jsonl merge=union
+decisions.md merge=union
